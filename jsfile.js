@@ -5,7 +5,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection) {
-    let playerSelection = playerSelection.toLowerCase();
+    playerSelection = playerSelection.toLowerCase();
     let computerSelection = computerPlay();
     if (playerSelection == computerSelection) {
         return "Draw";
@@ -26,4 +26,33 @@ function playRound(playerSelection) {
             return "You Win! Paper beats Rock";
         }
     }
+}
+function game() {
+    let playerPoints = 0;
+    let computerPoints = 0;
+    let result;
+    let roundResult;
+    for(let i = 0; i < 6; i++) {
+        let playerChoice = prompt("Choose between Rock, Paper, and Scissors");
+        playRound(playerChoice);
+        roundResult = playRound(playerChoice);
+        if(roundResult.startsWith("You Win")) {
+            playerPoints++;
+        }
+        else if(roundResult.startsWith("You Lose")) {
+            computerPoints++;
+        }
+        alert(roundResult);
+    }
+    if(playerPoints > computerPoints) {
+        result = "You won the Game!";
+    }
+    else if(computerPoints > playerPoints) {
+        result = "You lost the Game!";
+    }
+    else {
+        result = "It was a Draw!";
+    }
+    alert(result);
+    return result;
 }
